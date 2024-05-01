@@ -87,4 +87,15 @@ class Article_model extends CI_Model
 	{
 		return $this->db->count_all($this->_table);
 	}
+
+	public function search($keyword)
+	{
+		if (!$keyword) {
+			return null;
+		}
+		$this->db->like('title', $keyword);
+		$this->db->or_like('content', $keyword);
+		$query = $this->db->get($this->_table);
+		return $query->result();
+	}
 }
