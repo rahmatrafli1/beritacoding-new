@@ -6,7 +6,20 @@ class Article extends CI_Controller
 	public function index()
 	{
 		// @TODO: get article from model
-		$data['articles'] = $this->article_model->get_published();
+		$config['base_url'] = site_url('/article');
+		$config['page_query_string'] = TRUE;
+		$config['total_rows'] = $this->article_model->get_published_count();
+		$config['per_page'] = 2;
+
+		$config['full_tag_open'] = '<div class="pagination">';
+		$config['full_tag_close'] = '</div>';
+
+
+		$this->pagination->initialize($config);
+		$limit = $config['per_page'];
+		$offset = html_escape($this->input->get('per_page'));
+
+		$data['articles'] = $this->article_model->get_published($limit, $offset);
 
 		if (count($data['articles']) > 0) {
 			$this->load->view('articles/list_article', $data);

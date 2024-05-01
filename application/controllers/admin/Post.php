@@ -15,7 +15,19 @@ class Post extends CI_Controller
 	{
 		$data['current_user'] = $this->auth_model->current_user();
 
-		$data['articles'] = $this->article_model->get();
+		$config['base_url'] = site_url('/admin/post');
+		$config['page_query_string'] = TRUE;
+		$config['total_rows'] = $this->article_model->count();
+		$config['per_page'] = 2; // <-kamu bisa ubah ini
+
+		$config['full_tag_open'] = '<div class="pagination">';
+		$config['full_tag_close'] = '</div>';
+
+		$this->pagination->initialize($config);
+		$limit = $config['per_page'];
+		$offset = html_escape($this->input->get('per_page'));
+
+		$data['articles'] = $this->article_model->get($limit, $offset);
 
 		$data['keyword'] = $this->input->get('keyword');
 

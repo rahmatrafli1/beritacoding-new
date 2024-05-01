@@ -5,3 +5,4 @@
 
 <link rel="stylesheet" href="<?= base_url('assets/css/admin.css'); ?>" />
 <link rel="stylesheet" href="<?= base_url('assets/css/post_form.css'); ?>">
+<link rel="stylesheet" href="<?= base_url('assets/css/pagination.css'); ?>">

@@ -6,3 +6,4 @@
 <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
 <link rel="stylesheet" href="<?= base_url('assets/css/show_article.css'); ?>">
 <link rel="stylesheet" href="<?= base_url('assets/css/contact_form.css'); ?>">
+<link rel="stylesheet" href="<?= base_url('assets/css/pagination.css'); ?>">

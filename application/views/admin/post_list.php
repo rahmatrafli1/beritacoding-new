@@ -54,6 +54,8 @@
 				</tbody>
 			</table>
 
+			<?= $this->pagination->create_links(); ?>
+
 			<?php $this->load->view('admin/_partials/footer') ?>
 		</div>
 	</main>
